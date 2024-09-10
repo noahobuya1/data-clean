@@ -1,0 +1,455 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Custom definitions
+% To use this customization file, insert the line "\input{custom}" in the header of the tex file.
+
+% Formatting
+
+
+
+
+% Packages
+
+ \usepackage{amssymb,latexsym}
+\usepackage{amssymb,amsfonts,amsmath,latexsym,amsthm, bm}
+%\usepackage[usenames,dvipsnames]{color}
+%\usepackage[]{graphicx}
+%\usepackage[space]{grffile}
+\usepackage{mathrsfs}   % fancy math font
+% \usepackage[font=small,skip=0pt]{caption}
+%\usepackage[skip=0pt]{caption}
+%\usepackage{subcaption}
+%\usepackage{verbatim}
+%\usepackage{url}
+%\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{multirow}
+%\usepackage{extarrows}
+%\usepackage{multirow}
+%% \usepackage{wrapfig}
+%% \usepackage{epstopdf}
+%\usepackage{rotating}
+%\usepackage{tikz}
+%\usetikzlibrary{fit}					% fitting shapes to coordinates
+%\usetikzlibrary{backgrounds}	% drawing the background after the foreground
+
+
+% \usepackage[dvipdfm,colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+%\usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+%%\usepackage{hyperref}
+%\usepackage[authoryear,round]{natbib}
+
+
+%  Theorems, etc.
+
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{condition}[theorem]{Condition}
+% \newtheorem{conditions}[theorem]{Conditions}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%% \newtheorem*{unnumbered-definition}{Definition}
+%\newtheorem{example}[theorem]{Example}
+%\theoremstyle{remark}
+%\newtheorem*{remark}{Remark}
+%\numberwithin{equation}{section}
+
+
+
+
+% Document-specific shortcuts
+\newcommand{\btheta}{{\bm\theta}}
+\newcommand{\bbtheta}{{\pmb{\bm\theta}}}
+
+\newcommand{\commentary}[1]{\ifx\showcommentary\undefined\else \emph{#1}\fi}
+
+\newcommand{\term}[1]{\textit{\textbf{#1}}}
+
+% Math shortcuts
+
+% Probability distributions
+\DeclareMathOperator*{\Exp}{Exp}
+\DeclareMathOperator*{\TExp}{TExp}
+\DeclareMathOperator*{\Bernoulli}{Bernoulli}
+\DeclareMathOperator*{\Beta}{Beta}
+\DeclareMathOperator*{\Ga}{Gamma}
+\DeclareMathOperator*{\TGamma}{TGamma}
+\DeclareMathOperator*{\Poisson}{Poisson}
+\DeclareMathOperator*{\Binomial}{Binomial}
+\DeclareMathOperator*{\NormalGamma}{NormalGamma}
+\DeclareMathOperator*{\InvGamma}{InvGamma}
+\DeclareMathOperator*{\Cauchy}{Cauchy}
+\DeclareMathOperator*{\Uniform}{Uniform}
+\DeclareMathOperator*{\Gumbel}{Gumbel}
+\DeclareMathOperator*{\Pareto}{Pareto}
+\DeclareMathOperator*{\Mono}{Mono}
+\DeclareMathOperator*{\Geometric}{Geometric}
+\DeclareMathOperator*{\Wishart}{Wishart}
+
+% Math operators
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\Cov}{Cov}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\median}{median}
+\DeclareMathOperator*{\Vol}{Vol}
+
+% Math characters
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\I}{\mathds{1}}
+\newcommand{\V}{\mathbb{V}}
+
+\newcommand{\A}{\mathcal{A}}
+%\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Zcal}{\mathcal{Z}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\distfn}{\mathrm{dist}} % distance measure
+
+\newcommand{\T}{\mathtt{T}}
+\renewcommand{\emptyset}{\varnothing}
+
+
+% Miscellaneous commands
+\newcommand{\iid}{\stackrel{\mathrm{iid}}{\sim}}
+\newcommand{\matrixsmall}[1]{\bigl(\begin{smallmatrix}#1\end{smallmatrix} \bigr)}
+
+\newcommand{\items}[1]{\begin{itemize} #1 \end{itemize}}
+
+\newcommand{\todo}[1]{\emph{\textcolor{red}{(#1)}}}
+
+\newcommand{\branch}[4]{
+\left\{
+	\begin{array}{ll}
+		#1  & \mbox{if } #2 \\
+		#3 & \mbox{if } #4
+	\end{array}
+\right.
+}
+
+% approximately proportional to
+\def\app#1#2{%
+  \mathrel{%
+    \setbox0=\hbox{$#1\sim$}%
+    \setbox2=\hbox{%
+      \rlap{\hbox{$#1\propto$}}%
+      \lower1.3\ht0\box0%
+    }%
+    \raise0.25\ht2\box2%
+  }%
+}
+\def\approxprop{\mathpalette\app\relax}
+
+% \newcommand{\approptoinn}[2]{\mathrel{\vcenter{
+  % \offinterlineskip\halign{\hfil$##$\cr
+    % #1\propto\cr\noalign{\kern2pt}#1\sim\cr\noalign{\kern-2pt}}}}}
+
+% \newcommand{\approxpropto}{\mathpalette\approptoinn\relax}
+
+
+
+
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Evaluation Metrics for Blocking/Entity Resolution},
+  pdfauthor={STA 325: Homework 2},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Evaluation Metrics for Blocking/Entity Resolution}
+\author{STA 325: Homework 2}
+\date{Noah Obuya \textbar{} 1234887 \textbar{} 09/10/2024}
+
+\begin{document}
+\maketitle
+
+\textbf{\emph{General instructions for homeworks}}: Your code must be
+completely reproducible and must compile. No late homeworks will be
+accepted.
+
+\textbf{\emph{Reading}} Read the paper Binette and Steorts (2022) to get
+an overview of entity resolution. You'll want to refer to this during
+the course of the semester as it's meant to be a quick reference
+regarding the concepts that we will be covering. For more details, refer
+to the book by Christen (2012).
+
+\textbf{\emph{Advice}}: Start early on the homeworks and it is advised
+that you not wait until the day of as these homeworks are meant to be
+longer and treated as case studies.
+
+\textbf{\emph{Commenting code}} Code should be commented. See the Google
+style guide for questions regarding commenting or how to write code
+\url{https://google.github.io/styleguide/Rguide.xml}.
+
+\textbf{\emph{R Markdown Test}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{-1}
+\tightlist
+\item
+  Open a new R Markdown file; set the output to HTML mode and ``Knit''.
+  This should produce a web page with the knitting procedure executing
+  your code blocks. You can edit this new file to produce your homework
+  submission.
+\end{enumerate}
+
+\textbf{Total points on assignment: 2 (reproducibility) + 23 points for the assignment = 25 total points.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (4 points) What are the four main challenges of entity resolution?
+\item
+  (4 points, 1 point each) Suppose there are 10 records in a data set.
+  a.) What are the total number of brute-force comparisons needed to
+  make all-to-all record comparisons? b.) Repeat this for 100 records,
+  1000 records, 10,000 records. c.)
+  \textcolor{blue}{As the number of records increases, comment on the growth rate of the number all-to-all record comparisons? Hint: plot all-to-all record comparisons versus total number of records}
+\end{enumerate}
+
+What do you observe about the number of comparisons that need to be
+made?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (9 points) Consider the following record linkage data set with
+  1,000,000 total records that are matched between two databases. Assume
+  that 500,000 are true matches. Assume a classified (or method) finds
+  600,000 record pairs as matches, and of these 400,000 correspond as
+  true matches. The number of TP + FP + TN + FN = 50,000,000.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  (4 points) Given the information above, find the following information
+  in the confusion matrix: TP, FP, TN, and FN.
+\item
+  (1 point) Calculate the accuracy. Comment on the reliability of this
+  metric for this problem.
+\item
+  (1 point) Calculate the precision.
+\item
+  (1 point) Calculate the recall.
+\item
+  (1 point) Calculate the f-measure.
+\item
+  (1 point) Comment on the reliability of the precision, recall, and
+  f-measure for this problem.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  (6 points) We will revisit the Italian Survey on Household and Wealth
+  (SHIW) from class, which is a sample survey 383 households conducted
+  by the Bank of Italy every two years (2008 and 2010). The data set is
+  anonymized to remove first and last name (and other sensitive
+  information).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  (0 points) Please load the data set in the way that we did in class
+  and block based upon gender.
+\item
+  (1 point) Plot the size of the blocks and comment on how many their
+  are and their relative size.
+\item
+  (1 point) Calculate the reduction ratio and interpret its meaning.
+\item
+  (2 points) Calculate the precision and recall. Interpret the meaning
+  of each.
+\item
+  (1 point) Would this be a reasonable approach for blocking. Explain.
+\item
+  (1 point) Would blocking on gender be recommended for entity
+  resolution. Explain.
+\end{enumerate}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(italy)}
+\FunctionTok{library}\NormalTok{(assert)}
+\FunctionTok{data}\NormalTok{(italy08)}
+\FunctionTok{data}\NormalTok{(italy10)}
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{, }
+                      \AttributeTok{fig.width=}\DecValTok{4}\NormalTok{, }
+                      \AttributeTok{fig.height=}\DecValTok{3}\NormalTok{, }
+                      \AttributeTok{fig.align=}\StringTok{"center"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(italy08)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        id PARENT SEX ANASC NASCREG CIT ACOM4C STUDIO Q QUAL SETT IREG
+## 1 1040021      1   2  1948      16   1      0      5 1    2    3   16
+## 2 1040022     10   2  1952      16   1      0      7 1    2    3   16
+## 3 1110521      1   1  1972      20   1      2      5 1    1    4   20
+## 4 1110522      3   1  1935      20   1      2      2 3    6    5   20
+## 5 1110523      3   2  1941      20   1      2      3 3    6    5   20
+## 6  119401      1   1  1941       7   1      0      4 3    6    5    7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(italy10)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        id PARENT SEX ANASC NASCREG CIT ACOM4C STUDIO Q QUAL SETT IREG
+## 1 1040021      1   2  1948      16   1      0      5 3    6    5   16
+## 2 1040022     11   2  1952      16   1      0      7 1    2    3   16
+## 3 1110521      1   2  1941      20   1      2      3 3    6    5   20
+## 4 1110522      2   1  1935      20   1      2      2 3    6    5   20
+## 5 1110523      6   1  1972      20   1      2      5 1    1    4   20
+## 6  119721      1   2  1948      16   1      2      2 2    5    4   17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{id08 }\OtherTok{\textless{}{-}}\NormalTok{ italy08}\SpecialCharTok{$}\NormalTok{id}
+\NormalTok{id10 }\OtherTok{\textless{}{-}}\NormalTok{ italy10}\SpecialCharTok{$}\NormalTok{id}
+\NormalTok{id }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(italy08}\SpecialCharTok{$}\NormalTok{id, italy10}\SpecialCharTok{$}\NormalTok{id) }\CommentTok{\# combine the id}
+\NormalTok{italy08 }\OtherTok{\textless{}{-}}\NormalTok{ italy08[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)] }\CommentTok{\# remove the id}
+\NormalTok{italy10 }\OtherTok{\textless{}{-}}\NormalTok{ italy10[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)] }\CommentTok{\# remove the id }
+\NormalTok{italy }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(italy08, italy10)}
+\FunctionTok{head}\NormalTok{(italy)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   PARENT SEX ANASC NASCREG CIT ACOM4C STUDIO Q QUAL SETT IREG
+## 1      1   2  1948      16   1      0      5 1    2    3   16
+## 2     10   2  1952      16   1      0      7 1    2    3   16
+## 3      1   1  1972      20   1      2      5 1    1    4   20
+## 4      3   1  1935      20   1      2      2 3    6    5   20
+## 5      3   2  1941      20   1      2      3 3    6    5   20
+## 6      1   1  1941       7   1      0      4 3    6    5    7
+\end{verbatim}
+
+\end{document}
