@@ -1,11 +1,12 @@
 
 ---
-title: "Module 4: Probabilistic Blocking, Part I"
+title: 'Module 4: Probabilistic Blocking, Part I'
 author: "Rebecca C. Steorts"
-output: 
-     beamer_presentation:
-      includes: 
-          in_header: custom2.tex
+output:
+  slidy_presentation: default
+  beamer_presentation:
+    includes:
+      in_header: custom2.tex
 font-size: 8px
 ---
 
