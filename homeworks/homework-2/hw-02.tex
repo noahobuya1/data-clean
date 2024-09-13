@@ -94,171 +94,10 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-% Custom definitions
-% To use this customization file, insert the line "\input{custom}" in the header of the tex file.
-
-% Formatting
-
-
-
-
-% Packages
-
- \usepackage{amssymb,latexsym}
-\usepackage{amssymb,amsfonts,amsmath,latexsym,amsthm, bm}
-%\usepackage[usenames,dvipsnames]{color}
-%\usepackage[]{graphicx}
-%\usepackage[space]{grffile}
-\usepackage{mathrsfs}   % fancy math font
-% \usepackage[font=small,skip=0pt]{caption}
-%\usepackage[skip=0pt]{caption}
-%\usepackage{subcaption}
-%\usepackage{verbatim}
-%\usepackage{url}
-%\usepackage{bm}
-\usepackage{dsfont}
-\usepackage{multirow}
-%\usepackage{extarrows}
-%\usepackage{multirow}
-%% \usepackage{wrapfig}
-%% \usepackage{epstopdf}
-%\usepackage{rotating}
-%\usepackage{tikz}
-%\usetikzlibrary{fit}					% fitting shapes to coordinates
-%\usetikzlibrary{backgrounds}	% drawing the background after the foreground
-
-
-% \usepackage[dvipdfm,colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
-%\usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
-%%\usepackage{hyperref}
-%\usepackage[authoryear,round]{natbib}
-
-
-%  Theorems, etc.
-
-%\theoremstyle{plain}
-%\newtheorem{theorem}{Theorem}[section]
-%\newtheorem{corollary}[theorem]{Corollary}
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{proposition}[theorem]{Proposition}
-%\newtheorem{condition}[theorem]{Condition}
-% \newtheorem{conditions}[theorem]{Conditions}
-
-%\theoremstyle{definition}
-%\newtheorem{definition}[theorem]{Definition}
-%% \newtheorem*{unnumbered-definition}{Definition}
-%\newtheorem{example}[theorem]{Example}
-%\theoremstyle{remark}
-%\newtheorem*{remark}{Remark}
-%\numberwithin{equation}{section}
-
-
-
-
-% Document-specific shortcuts
-\newcommand{\btheta}{{\bm\theta}}
-\newcommand{\bbtheta}{{\pmb{\bm\theta}}}
-
-\newcommand{\commentary}[1]{\ifx\showcommentary\undefined\else \emph{#1}\fi}
-
-\newcommand{\term}[1]{\textit{\textbf{#1}}}
-
-% Math shortcuts
-
-% Probability distributions
-\DeclareMathOperator*{\Exp}{Exp}
-\DeclareMathOperator*{\TExp}{TExp}
-\DeclareMathOperator*{\Bernoulli}{Bernoulli}
-\DeclareMathOperator*{\Beta}{Beta}
-\DeclareMathOperator*{\Ga}{Gamma}
-\DeclareMathOperator*{\TGamma}{TGamma}
-\DeclareMathOperator*{\Poisson}{Poisson}
-\DeclareMathOperator*{\Binomial}{Binomial}
-\DeclareMathOperator*{\NormalGamma}{NormalGamma}
-\DeclareMathOperator*{\InvGamma}{InvGamma}
-\DeclareMathOperator*{\Cauchy}{Cauchy}
-\DeclareMathOperator*{\Uniform}{Uniform}
-\DeclareMathOperator*{\Gumbel}{Gumbel}
-\DeclareMathOperator*{\Pareto}{Pareto}
-\DeclareMathOperator*{\Mono}{Mono}
-\DeclareMathOperator*{\Geometric}{Geometric}
-\DeclareMathOperator*{\Wishart}{Wishart}
-
-% Math operators
-\DeclareMathOperator*{\argmin}{arg\,min}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\Cov}{Cov}
-\DeclareMathOperator*{\diag}{diag}
-\DeclareMathOperator*{\median}{median}
-\DeclareMathOperator*{\Vol}{Vol}
-
-% Math characters
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\E}{\mathbb{E}}
-\renewcommand{\Pr}{\mathbb{P}}
-\newcommand{\I}{\mathds{1}}
-\newcommand{\V}{\mathbb{V}}
-
-\newcommand{\A}{\mathcal{A}}
-%\newcommand{\C}{\mathcal{C}}
-\newcommand{\D}{\mathcal{D}}
-\newcommand{\Hcal}{\mathcal{H}}
-\newcommand{\M}{\mathcal{M}}
-\newcommand{\N}{\mathcal{N}}
-\newcommand{\X}{\mathcal{X}}
-\newcommand{\Zcal}{\mathcal{Z}}
-\renewcommand{\P}{\mathcal{P}}
-\newcommand{\distfn}{\mathrm{dist}} % distance measure
-
-\newcommand{\T}{\mathtt{T}}
-\renewcommand{\emptyset}{\varnothing}
-
-
-% Miscellaneous commands
-\newcommand{\iid}{\stackrel{\mathrm{iid}}{\sim}}
-\newcommand{\matrixsmall}[1]{\bigl(\begin{smallmatrix}#1\end{smallmatrix} \bigr)}
-
-\newcommand{\items}[1]{\begin{itemize} #1 \end{itemize}}
-
-\newcommand{\todo}[1]{\emph{\textcolor{red}{(#1)}}}
-
-\newcommand{\branch}[4]{
-\left\{
-	\begin{array}{ll}
-		#1  & \mbox{if } #2 \\
-		#3 & \mbox{if } #4
-	\end{array}
-\right.
-}
-
-% approximately proportional to
-\def\app#1#2{%
-  \mathrel{%
-    \setbox0=\hbox{$#1\sim$}%
-    \setbox2=\hbox{%
-      \rlap{\hbox{$#1\propto$}}%
-      \lower1.3\ht0\box0%
-    }%
-    \raise0.25\ht2\box2%
-  }%
-}
-\def\approxprop{\mathpalette\app\relax}
-
-% \newcommand{\approptoinn}[2]{\mathrel{\vcenter{
-  % \offinterlineskip\halign{\hfil$##$\cr
-    % #1\propto\cr\noalign{\kern2pt}#1\sim\cr\noalign{\kern-2pt}}}}}
-
-% \newcommand{\approxpropto}{\mathpalette\approptoinn\relax}
-
-
-
-
-
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
@@ -290,38 +129,87 @@ longer and treated as case studies.
 
 \textbf{\emph{Commenting code}} Code should be commented. See the Google
 style guide for questions regarding commenting or how to write code
-\url{https://google.github.io/styleguide/Rguide.xml}.
 
 \textbf{\emph{R Markdown Test}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{-1}
-\tightlist
 \item
   Open a new R Markdown file; set the output to HTML mode and ``Knit''.
   This should produce a web page with the knitting procedure executing
   your code blocks. You can edit this new file to produce your homework
   submission.
-\end{enumerate}
-
-\textbf{Total points on assignment: 2 (reproducibility) + 23 points for the assignment = 25 total points.}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   (4 points) What are the four main challenges of entity resolution?
+
+  The four main challenges of entity resolution are: costly manual
+  labeling, scalability/ computational efficiency, limited treatment of
+  uncertainty, and unreliable evaluation.
 \item
   (4 points, 1 point each) Suppose there are 10 records in a data set.
   a.) What are the total number of brute-force comparisons needed to
   make all-to-all record comparisons? b.) Repeat this for 100 records,
   1000 records, 10,000 records. c.)
-  \textcolor{blue}{As the number of records increases, comment on the growth rate of the number all-to-all record comparisons? Hint: plot all-to-all record comparisons versus total number of records}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii})}
+  \item
+    The total number of brute-force comparisons you need to make
+    all-to-all record comparisons are 45 comparisons. That is using the
+    combination formula for pairs n(n-1)/2.
+  \item
+    100 records would need 4950 comparisons, 1000 records would need
+    499500 comparisons, and 10000 records would need 49995000
+    comparisons.
+  \end{enumerate}
 \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.1     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.1
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+        \CommentTok{\#create table to base graph on}
+\NormalTok{        comparison\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+          \AttributeTok{Records =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10000}\NormalTok{,}
+          \AttributeTok{Comparisons =} \FunctionTok{sapply}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10000}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(n) (n }\SpecialCharTok{*}\NormalTok{ (n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{/} \DecValTok{2}\NormalTok{)}
+\NormalTok{        )}
+        \CommentTok{\#create graph using ggplot}
+\NormalTok{        comparison\_table }\SpecialCharTok{|\textgreater{}} 
+          \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Records, }\AttributeTok{y =}\NormalTok{ Comparisons)) }\SpecialCharTok{+}
+          \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+          \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'
+\end{verbatim}
+
+\includegraphics{hw-02_files/figure-latex/comparisontable-1.pdf}
 
 What do you observe about the number of comparisons that need to be
 made?
+
+The number of comparisons that need to be made increase exponentially.
+They follow the pair combinations formula (n(n-1))/2
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -337,22 +225,53 @@ made?
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
-\tightlist
 \item
   (4 points) Given the information above, find the following information
   in the confusion matrix: TP, FP, TN, and FN.
+
+  False positives = Total predicted matches - true positives = 600000 -
+  400000 = 200000
+
+  False negatives = Actual positives - true positives = 500000 - 400000
+  = 100000
+
+  True negatives = All records - (FP + FN + TP) = 1000000 - 700000 =
+  300000
 \item
   (1 point) Calculate the accuracy. Comment on the reliability of this
   metric for this problem.
+
+  TP + TN / (TP + TN + FP + FN) = 7/10 = 0.7 (70\%). Accuracy at 70\%
+  seems decent but might still be misleading. The classifier could have
+  predicted the majority of true negatives or some matches randomly,
+  which could result in a relatively high accuracy without actually
+  being good at identifying true matches. In imbalanced datasets,
+  accuracy may not provide the full picture of classifier performance.
 \item
   (1 point) Calculate the precision.
+
+  TP/ TP + FP = 4/6 = 0.667 (66.7\%)
 \item
   (1 point) Calculate the recall.
+
+  TP/ (TP + FN) = 4/5 (80\%)
 \item
   (1 point) Calculate the f-measure.
+
+  Precision*Recall / (Precision + Recall) = 0.667 * 0.8/ (0.8 + 0.667) =
+  0.727
 \item
   (1 point) Comment on the reliability of the precision, recall, and
   f-measure for this problem.
+
+  Precision of 66.67\% shows that a fair number of predicted matches are
+  false positives, meaning that the classifier is not entirely accurate
+  in predicting true matches. Recall of 80\% indicates that the
+  classifier is good at capturing most of the actual matches but still
+  misses some true matches. F-Measure balances precision and recall,
+  giving an overall view of classifier performance. A value of 72.7\%
+  shows that the classifier performs moderately well, but improvements
+  could be made, especially in reducing false positives.
 \end{enumerate}
 
 \begin{enumerate}
@@ -369,7 +288,6 @@ made?
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
-\tightlist
 \item
   (0 points) Please load the data set in the way that we did in class
   and block based upon gender.
@@ -377,21 +295,27 @@ made?
   (1 point) Plot the size of the blocks and comment on how many their
   are and their relative size.
 \item
-  (1 point) Calculate the reduction ratio and interpret its meaning.
+  (1 point) Calculate the reduction ratio and interpret its meaning.\\
 \item
   (2 points) Calculate the precision and recall. Interpret the meaning
   of each.
 \item
   (1 point) Would this be a reasonable approach for blocking. Explain.
+
+  A high reduction ratio would suggest that the blocking ratio is
+  appropriate.
 \item
   (1 point) Would blocking on gender be recommended for entity
   resolution. Explain.
-\end{enumerate}
 
-\newpage
+  Blocking based on gender is not recommended for entity resolution. It
+  creates potential for missing true matches and a reduction of false
+  matches.
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#given code start}
 \FunctionTok{library}\NormalTok{(italy)}
 \FunctionTok{library}\NormalTok{(assert)}
 \FunctionTok{data}\NormalTok{(italy08)}
@@ -451,5 +375,215 @@ made?
 ## 5      3   2  1941      20   1      2      3 3    6    5   20
 ## 6      1   1  1941       7   1      0      4 3    6    5    7
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#given code end}
+
+\FunctionTok{library}\NormalTok{(italy)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Load required libraries}
+\FunctionTok{library}\NormalTok{(RecordLinkage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: DBI
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: RSQLite
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ff
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: bit
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'bit'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     symdiff
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     xor
+\end{verbatim}
+
+\begin{verbatim}
+## Attaching package ff
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("fftempdir")=="/var/folders/32/bnw5f6g54kx66d04vmc9jj3w0000gn/T//RtmpyVlPA8/ff"
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("ffextension")=="ff"
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("ffdrop")==TRUE
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("fffinonexit")==TRUE
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("ffpagesize")==65536
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("ffcaching")=="mmnoflush"  -- consider "ffeachflush" if your system stalls on large writes
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("ffbatchbytes")==16777216 -- consider a different value for tuning your system
+\end{verbatim}
+
+\begin{verbatim}
+## - getOption("ffmaxbytes")==536870912 -- consider a different value for tuning your system
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'ff'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:utils':
+## 
+##     write.csv, write.csv2
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     is.factor, is.ordered
+\end{verbatim}
+
+\begin{verbatim}
+## RecordLinkage library
+\end{verbatim}
+
+\begin{verbatim}
+## [c] IMBEI Mainz
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'RecordLinkage'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:bit':
+## 
+##     clone
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     isFALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(data.table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:bit':
+## 
+##     setattr
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:lubridate':
+## 
+##     hour, isoweek, mday, minute, month, quarter, second, wday, week,
+##     yday, year
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:dplyr':
+## 
+##     between, first, last
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     transpose
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Example data preparation}
+\NormalTok{data08 }\OtherTok{\textless{}{-}} \FunctionTok{as.data.table}\NormalTok{(italy08)}
+\NormalTok{data10 }\OtherTok{\textless{}{-}} \FunctionTok{as.data.table}\NormalTok{(italy10)}
+\NormalTok{combined\_data }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(data08, data10)}
+
+\CommentTok{\# Create a blocking attribute (e.g., \textquotesingle{}gender\textquotesingle{})}
+\NormalTok{combined\_data[, block }\SpecialCharTok{:=}\NormalTok{ SEX]}
+
+\CommentTok{\# Ensure \textquotesingle{}block\textquotesingle{} exists and has no missing values}
+\NormalTok{combined\_data }\OtherTok{\textless{}{-}}\NormalTok{ combined\_data[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(block)]}
+
+
+
+\CommentTok{\# Count block sizes}
+\NormalTok{block\_sizes }\OtherTok{\textless{}{-}}\NormalTok{ combined\_data[, .(}\AttributeTok{block\_size =}\NormalTok{ .N), by }\OtherTok{=}\NormalTok{ block]}
+
+\CommentTok{\# Plot distribution of block sizes}
+\FunctionTok{ggplot}\NormalTok{(block\_sizes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ block\_size)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Block Sizes"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Block Size"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{hw-02_files/figure-latex/givencode-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate total possible comparisons without blocking}
+\NormalTok{n\_total }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(combined\_data)}
+\NormalTok{total\_comparisons\_no\_block }\OtherTok{\textless{}{-}} \FunctionTok{choose}\NormalTok{(n\_total, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Calculate total comparisons within blocks}
+\NormalTok{total\_comparisons\_with\_block }\OtherTok{\textless{}{-}}\NormalTok{ block\_sizes[, }\FunctionTok{sum}\NormalTok{(}\FunctionTok{choose}\NormalTok{(block\_size, }\DecValTok{2}\NormalTok{))]}
+
+\CommentTok{\# Calculate reduction ratio}
+\NormalTok{reduction\_ratio }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (total\_comparisons\_with\_block }\SpecialCharTok{/}\NormalTok{ total\_comparisons\_no\_block)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Reduction Ratio:"}\NormalTok{, reduction\_ratio))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Reduction Ratio: 0.498623423190158"
+\end{verbatim}
+
+\hfill\break
 
 \end{document}

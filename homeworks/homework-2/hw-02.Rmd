@@ -3,12 +3,10 @@ title: "Evaluation Metrics for Blocking/Entity Resolution"
 author: 'STA 325: Homework 2'
 date: "Noah Obuya | 1234887 | 09/10/2024"
 output:
+  pdf_document:
+    keep_tex: true
   html_document:
     df_print: paged
-  pdf_document:
-    includes:
-      in_header: custom2.tex
-font-size: 8px
 ---
 
 ***General instructions for homeworks***: Your code must be completely reproducible and must compile. No late homeworks will be accepted.
@@ -17,55 +15,92 @@ font-size: 8px
 
 ***Advice***: Start early on the homeworks and it is advised that you not wait until the day of as these homeworks are meant to be longer and treated as case studies.
 
-***Commenting code*** Code should be commented. See the Google style guide for questions regarding commenting or how to write code \url{https://google.github.io/styleguide/Rguide.xml}.
+***Commenting code*** Code should be commented. See the Google style guide for questions regarding commenting or how to write code
 
 ***R Markdown Test***
 
 0.  Open a new R Markdown file; set the output to HTML mode and "Knit". This should produce a web page with the knitting procedure executing your code blocks. You can edit this new file to produce your homework submission.
 
-\textbf{Total points on assignment: 2 (reproducibility) + 23 points for the assignment = 25 total points.}
-
 1.  (4 points) What are the four main challenges of entity resolution?
 
     The four main challenges of entity resolution are: costly manual labeling, scalability/ computational efficiency, limited treatment of uncertainty, and unreliable evaluation.
 
-2.  (4 points, 1 point each) Suppose there are 10 records in a data set. a.) What are the total number of brute-force comparisons needed to make all-to-all record comparisons? b.) Repeat this for 100 records, 1000 records, 10,000 records. c.) \textcolor{blue}{As the number of records increases, comment on the growth rate of the number all-to-all record comparisons? Hint: plot all-to-all record comparisons versus total number of records}
+2.  (4 points, 1 point each) Suppose there are 10 records in a data set. a.) What are the total number of brute-force comparisons needed to make all-to-all record comparisons? b.) Repeat this for 100 records, 1000 records, 10,000 records. c.)
 
     a)  The total number of brute-force comparisons you need to make all-to-all record comparisons are 45 comparisons. That is using the combination formula for pairs n(n-1)/2.
 
     b)  100 records would need 4950 comparisons, 1000 records would need 499500 comparisons, and 10000 records would need 49995000 comparisons.
 
+```{r comparisontable}
+
+library(tidyverse)
+        #create table to base graph on
+        comparison_table <- data.frame(
+          Records = 1:10000,
+          Comparisons = sapply(1:10000, function(n) (n * (n - 1)) / 2)
+        )
+        #create graph using ggplot
+        comparison_table |> 
+          ggplot(aes(x = Records, y = Comparisons)) +
+          geom_point() + 
+          geom_smooth(se = FALSE)
+```
+
 What do you observe about the number of comparisons that need to be made?
+
+The number of comparisons that need to be made increase exponentially. They follow the pair combinations formula (n(n-1))/2
 
 3.  (9 points) Consider the following record linkage data set with 1,000,000 total records that are matched between two databases. Assume that 500,000 are true matches. Assume a classified (or method) finds 600,000 record pairs as matches, and of these 400,000 correspond as true matches. The number of TP + FP + TN + FN = 50,000,000.
 
-<!-- -->
-
 a.  (4 points) Given the information above, find the following information in the confusion matrix: TP, FP, TN, and FN.
+
+    False positives = Total predicted matches - true positives = 600000 - 400000 = 200000
+
+    False negatives = Actual positives - true positives = 500000 - 400000 = 100000
+
+    True negatives = All records - (FP + FN + TP) = 1000000 - 700000 = 300000
+
 b.  (1 point) Calculate the accuracy. Comment on the reliability of this metric for this problem.
+
+    TP + TN / (TP + TN + FP + FN) = 7/10 = 0.7 (70%). Accuracy at 70% seems decent but might still be misleading. The classifier could have predicted the majority of true negatives or some matches randomly, which could result in a relatively high accuracy without actually being good at identifying true matches. In imbalanced datasets, accuracy may not provide the full picture of classifier performance.
+
 c.  (1 point) Calculate the precision.
+
+    TP/ TP + FP = 4/6 = 0.667 (66.7%)
+
 d.  (1 point) Calculate the recall.
+
+    TP/ (TP + FN) = 4/5 (80%)
+
 e.  (1 point) Calculate the f-measure.
+
+    Precision\*Recall / (Precision + Recall) = 0.667 \* 0.8/ (0.8 + 0.667) = 0.727
+
 f.  (1 point) Comment on the reliability of the precision, recall, and f-measure for this problem.
 
-<!-- -->
+    Precision of 66.67% shows that a fair number of predicted matches are false positives, meaning that the classifier is not entirely accurate in predicting true matches. Recall of 80% indicates that the classifier is good at capturing most of the actual matches but still misses some true matches. F-Measure balances precision and recall, giving an overall view of classifier performance. A value of 72.7% shows that the classifier performs moderately well, but improvements could be made, especially in reducing false positives.
 
 4.  (6 points) We will revisit the Italian Survey on Household and Wealth (SHIW) from class, which is a sample survey 383 households conducted by the Bank of Italy every two years (2008 and 2010). The data set is anonymized to remove first and last name (and other sensitive information).
 
-<!-- -->
-
 a.  (0 points) Please load the data set in the way that we did in class and block based upon gender.
+
 b.  (1 point) Plot the size of the blocks and comment on how many their are and their relative size.
-c.  (1 point) Calculate the reduction ratio and interpret its meaning.
+
+c.  (1 point) Calculate the reduction ratio and interpret its meaning.\
+
 d.  (2 points) Calculate the precision and recall. Interpret the meaning of each.
+
 e.  (1 point) Would this be a reasonable approach for blocking. Explain.
+
+    A high reduction ratio would suggest that the blocking ratio is appropriate.
+
 f.  (1 point) Would blocking on gender be recommended for entity resolution. Explain.
 
-\newpage
+    Blocking based on gender is not recommended for entity resolution. It creates potential for missing true matches and a reduction of false matches.
 
 ```{r givencode}
 
-
+#given code start
 library(italy)
 library(assert)
 data(italy08)
@@ -83,4 +118,50 @@ italy08 <- italy08[-c(1)] # remove the id
 italy10 <- italy10[-c(1)] # remove the id 
 italy <- rbind(italy08, italy10)
 head(italy)
+#given code end
+
+library(italy)
+library(dplyr)
+
+# Load required libraries
+library(RecordLinkage)
+library(data.table)
+library(ggplot2)
+
+# Example data preparation
+data08 <- as.data.table(italy08)
+data10 <- as.data.table(italy10)
+combined_data <- rbind(data08, data10)
+
+# Create a blocking attribute (e.g., 'gender')
+combined_data[, block := SEX]
+
+# Ensure 'block' exists and has no missing values
+combined_data <- combined_data[!is.na(block)]
+
+
+
+# Count block sizes
+block_sizes <- combined_data[, .(block_size = .N), by = block]
+
+# Plot distribution of block sizes
+ggplot(block_sizes, aes(x = block_size)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Block Sizes", x = "Block Size", y = "Frequency") +
+  theme_minimal()
+
+# Calculate total possible comparisons without blocking
+n_total <- nrow(combined_data)
+total_comparisons_no_block <- choose(n_total, 2)
+
+# Calculate total comparisons within blocks
+total_comparisons_with_block <- block_sizes[, sum(choose(block_size, 2))]
+
+# Calculate reduction ratio
+reduction_ratio <- 1 - (total_comparisons_with_block / total_comparisons_no_block)
+print(paste("Reduction Ratio:", reduction_ratio))
+
+
 ```
+
+\
